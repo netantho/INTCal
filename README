@@ -1,0 +1,10 @@
+Dépendances :
+* python2.6 >= 2.6.7 (ne doit pas marcher avec python 3)
+* python-xlrd >= 0.6.1
+* icalendar https://github.com/collective/icalendar >= commit 4d0cc5fae733367bb6f64103fd65f0bb12a2bd2e
+
+Testé avec :
+* Debian testing avec python 2.6.7, python-xlrd 0.6.1, icalendar commit 4d0cc5fae733367bb6f64103fd65f0bb12a2bd2e
+
+Pour trouver aide :
+python ./intcal.py
