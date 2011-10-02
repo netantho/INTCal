@@ -9,7 +9,7 @@ from icalendar import Calendar, Event
 from datetime import datetime
 
 #Version du programme
-version = 0.3
+version = "0.3.1"
 
 #Priorité des événements
 priority = 3
@@ -126,7 +126,7 @@ class Intcal:
 			self.event.add('dtstamp',  datetime.now())
 			self.event.add('priority', priority)
 			self.event.add('location', " ".join(self.salles))
-			self.event.add('description', "\N".join(self.types)+"\N"+self.iuff+"\N"+"\N".join(self.formateurs)+"\N"+" ".join(self.groupes)+"\N"+"\N".join(self.description))
+			self.event.add('description', "\N".join(self.types)+"\N"+self.iuff+"\N"+"\N".join(self.formateurs)+"\N"+" ".join(self.groupes)+"\N"+"\N".join(self.description)+"\N"+"Mis à jour le ".decode("utf-8")+self.dateEdition)
 			self.cal.add_component(self.event)
 
 	def cal_ecrire(self, fichier):
@@ -144,6 +144,8 @@ class Intcal:
 			regex = re.search("[0-9]{2}/[0-9]{2}/[0-9]{4}", self.sh.cell_value(rowx=0, colx=0))
 			if (regex):
 				self.dateEdition = regex.group(0)
+			else:
+				self.dateEdition = ""
 			for rx in range(12, self.sh.nrows):
 				for ry in range(1, self.sh.ncols):
 					if (self.sh.cell_value(rowx=rx, colx=ry)):
