@@ -35,7 +35,7 @@ class Intcal:
 		"""Extrait les groupes du cours"""
 		self.groupes = []
 		for i in range(1, len(self.texte_nl)):
-			regex = re.search("Gp-", self.texte_nl[i])
+			regex = re.search("Gp-|gp-", self.texte_nl[i])
 			if (regex):
 				self.groupes.append(self.texte_nl[i])
 
@@ -71,10 +71,10 @@ class Intcal:
 			return True
 
 	def extraire_iuff(self):
-		"""Extrait l'IUFF/CUFF/IUAF du cours"""
+		"""Extrait l'IUFF/CUFF/IUAF/CUFE du cours"""
 		self.iuff = False
 		for i in range(1, len(self.texte_nl)):
-			regex = re.search("^(IUFF|CUFF|IUAF).*", self.texte_nl[i])
+			regex = re.search("^(IUFF|CUFF|IUAF|CUFE).*", self.texte_nl[i])
 			if (regex):
 				self.iuff = regex.group(0)
 				break
