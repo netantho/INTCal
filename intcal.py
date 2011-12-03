@@ -9,7 +9,7 @@ from icalendar import Calendar, Event
 from datetime import datetime
 
 #Version du programme
-version = "0.3.1"
+version = "0.3.2"
 
 #Priorité des événements
 priority = 3
@@ -126,7 +126,18 @@ class Intcal:
 			self.event.add('dtstamp',  datetime.now())
 			self.event.add('priority', priority)
 			self.event.add('location', " ".join(self.salles))
-			self.event.add('description', "\N".join(self.types)+"\N"+self.iuff+"\N"+"\N".join(self.formateurs)+"\N"+" ".join(self.groupes)+"\N"+"\N".join(self.description)+"\N"+"Mis à jour le ".decode("utf-8")+self.dateEdition)
+			description = ""
+			if (self.types):
+				description += "\N".join(self.types)
+			if (self.iuff):
+				description += "\N"+self.iuff
+			if (self.formateurs):
+				description += "\N".join(self.formateurs)
+			if (self.groupes):
+				description += "\N"+" ".join(self.groupes)
+			if (self.description):
+				description += "\N"+"\N".join(self.description)
+			self.event.add('description', description+"\N"+"Mis à jour le ".decode("utf-8")+self.dateEdition)
 			self.cal.add_component(self.event)
 
 	def cal_ecrire(self, fichier):
