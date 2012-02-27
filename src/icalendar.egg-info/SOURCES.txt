@@ -1,6 +1,5 @@
 MANIFEST.in
 README
-README.rst
 setup.py
 docs/changelog.rst
 src/icalendar/__init__.py

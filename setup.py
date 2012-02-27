@@ -7,7 +7,7 @@ setuptools.setup(
     name='icalendar',
     version=version,
     description="iCalendar parser/generator",
-    long_description=open("README.rst").read() + \
+    long_description=open("README_icalendar.rst").read() + \
             open(os.path.join('docs', 'changelog.rst')).read(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',

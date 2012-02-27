@@ -43,7 +43,7 @@ class Intcal:
 		"""Extrait les types (Cours Magistral, TP, TD, ...) du cours"""
 		self.types = []
 		for i in range(1, len(self.texte_nl)):
-			regex = re.search("TP|TD|Examen|Conférence|Cours Magistral|Présentation|Point de Rencontre|Projet|Formation en ligne|Soutenance|Cours de Langue|Langues|Cours Professeur|Cours Intégré", self.texte_nl[i].encode("utf-8"))
+			regex = re.search("TP|TD|Examen|Conférence|Cours Magistral|Présentation|Point de Rencontre|Projet|Formation en ligne|Soutenance|Cours de Langue|Langues|Cours Professeur|Cours Intégré|Bureau d'études", self.texte_nl[i].encode("utf-8"))
 			if (regex and not self.texte_nl[i] in self.groupes):
 				self.types.append(self.texte_nl[i])
 			else:
@@ -71,10 +71,10 @@ class Intcal:
 			return True
 
 	def extraire_iuff(self):
-		"""Extrait l'IUFF/CUFF/IUAF/CUFE du cours"""
+		"""Extrait l'IUFF/CUFF/IUAF/CUFE/IUSF du cours"""
 		self.iuff = False
 		for i in range(1, len(self.texte_nl)):
-			regex = re.search("^(IUFF|CUFF|IUAF|CUFE).*", self.texte_nl[i])
+			regex = re.search("^(IUFF|CUFF|IUAF|CUFE|IUSF).*", self.texte_nl[i])
 			if (regex):
 				self.iuff = regex.group(0)
 				break
